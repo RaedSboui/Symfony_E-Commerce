@@ -1,0 +1,31 @@
+form{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+label{
+    color: #ffbe76;
+    margin-bottom: 10px;
+}
+
+
+form .form-control{
+    color: #130f40;
+    border: 2px #ffeaa7;
+    background-color: #ffeaa7;
+    width: 70vw;
+    margin-bottom: 1rem;
+}
+
+.form-control::placeholder{
+    color: #130f40;
+}
+
+input:focus,
+select:focus {
+  outline: none !important;
+  border: 3px solid #ff5252;
+  box-shadow: 0 0 12px #719ece;
+}
+

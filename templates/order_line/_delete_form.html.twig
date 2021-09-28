@@ -1,0 +1,21 @@
+{% extends 'deleteModal.html.twig' %}
+
+{% block dataTarget %}
+    data-bs-target="#deleteModal{{order_line.id}}"
+{% endblock %}
+
+{% block idModal %}
+    id="deleteModal{{order_line.id}}"
+{% endblock %}
+
+{% block name %}
+    N° {{order_line.id}}
+{% endblock %}
+
+{% block path %}
+    action="{{ path('order_line_delete', {'id': order_line.id}) }}"
+{% endblock %}
+
+{% block crf_token %}
+    value="{{ csrf_token('delete' ~ order_line.id) }}"
+{% endblock %}

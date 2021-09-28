@@ -1,0 +1,34 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-danger"
+        data-bs-toggle="modal"
+        {% block dataTarget %} {% endblock %}>
+    <i class="fas fa-trash-alt"></i>
+</button>
+
+<!-- Modal -->
+<div class="modal fade" {% block idModal %} {% endblock %} tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-gradient" style="background: #eb4d4b;">
+            <div class="modal-header">
+                <h5 class="modal-title">ALLERT !!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure! You want to delete <span style="color: #130f40;">{% block name %} {% endblock %}</span> ?&hellip;</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+
+                <form method="post" {% block path %} {% endblock %}>
+                    <input type="hidden" name="_token" {% block crf_token %} {% endblock %}>
+                    <button class="btn btn-primary">Confirm</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

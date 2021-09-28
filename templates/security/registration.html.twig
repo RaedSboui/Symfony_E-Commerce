@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+
+{% block stylesheet %}
+<link rel="stylesheet"  href={{ asset('assets/form/form.css') }} >
+<style>
+  ul li {
+    color: red;
+  }
+</style>
+{% endblock %}
+<div style="margin-top:5rem;">
+    <h1 class="text-center">Registration</h1>
+
+    {{form_start(form)}}
+        {{form_row(form.username, {'label': 'User Name', 'attr': {'class' : 'form-control', 'placeholder': 'User Name'}})}}
+        {{form_row(form.email, {'label': 'Email', 'attr': {'class' : 'form-control', 'placeholder': 'Email Adress'}})}}
+        {{form_row(form.password, {'label': 'Password', 'attr': {'class' : 'form-control', 'placeholder': 'Password'}})}}
+        {{form_row(form.confirm_password, {'label': 'Confirm Password', 'attr': {'class' : 'form-control', 'placeholder': 'Confirm Password'}})}}
+        {% if is_granted('ROLE_SUPER_ADMIN')  %}
+          {{form_row(form.roles, {'label': 'Roles', 'attr': {'class' : 'form-control'}})}}
+        {% else %}
+          <input type="hidden" name="roles" value="ROLE_USER"/>
+        {% endif %}
+        <button type="submit" class="btn btn-success">Register</button>
+    {{form_end(form)}}
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html >
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <!--  Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+        <!-- Theme style -->
+        <link rel="stylesheet"  href="{{ asset('assets/theme/css/bootstrap.min.css') }}" >
+        <!-- Logo css -->
+            <link rel="stylesheet"  href="{{ asset('assets/header_logo/logo.css') }}" >
+        <!-- Footer css -->
+        <link rel="stylesheet"  href="{{ asset('assets/footer/css/footer.css') }}" >
+
+
+        {% block stylesheets %}
+        <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html{
+    scroll-behavior: smooth;
+}
+        </style>
+        {% endblock %}
+        {% block javascripts %}
+           <!-- jQuery -->
+            <script src="{{ asset('assets/theme/js/bootstrap.min.js') }}"></script>
+             <!-- Show more -->
+            <script src="{{ asset('assets/home/js/home.js') }}"></script>
+        {% endblock %}
+
+    </head>
+    <body id="page-top">
+        {% include "_header.html.twig" %}
+        {% block body %}
+        {% endblock %}
+    </body>
+
+{% include "_footer.html.twig" %}
+
+{% block homescript %}{% endblock %}
+
+
+ <!-- To Top js -->
+<script src="{{ asset('assets/footer/js/footer.js') }}"></script>
+
+
+</html>

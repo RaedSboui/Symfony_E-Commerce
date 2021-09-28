@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Order{% endblock %}
+
+{% block body %}
+<div style="margin-top:5rem;">
+    <h1 class="text-center" style="margin-bottom: 2rem;">
+        Order <span style="color:#e74c3c"> N° {{order.number}}</span>
+    </h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ order.id }}</td>
+            </tr>
+            <tr>
+                <th>Number</th>
+                <td>{{ order.number }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ order.date ? order.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Order Line</th>
+                <td>
+ 
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="mx-auto w-auto">
+        <tr>
+            <td>
+                <a href="{{ path('order_index') }}" class="btn btn-primary" style="margin-right: 1rem;">
+                    <i class="fas fa-arrow-left"></i> Back
+                </a>
+            </td>
+            <td>
+                <a href="{{ path('order_edit', {'id': order.id}) }}" class="btn btn-success" style="margin-right: 1rem;">
+                    <i class="fas fa-edit"></i>
+                </a>
+            </td>
+            <td>
+                {{ include('order/_delete_form.html.twig') }}
+            </td>
+        </tr>
+    </table>
+</div>
+{% endblock %}

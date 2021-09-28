@@ -1,0 +1,37 @@
+{% extends 'table.html.twig' %}
+
+{% block title %}OrderLine list{% endblock %}
+
+{% block path_new %}href="{{ path('order_line_new') }}"{% endblock %}
+
+{% block thead %}
+    <th class="text-center" data-field="state" data-checkbox="true"></th>
+    <th class="text-center" data-field="id" data-sortable="true">Id</th>
+    <th class="text-center" data-field="amount" data-sortable="true">Amount</th>
+    <th class="text-center" data-field="price" data-sortable="true">Price</th>
+    <th class="text-center" data-field="action" data-sortable="true">actions</th>
+{% endblock %}
+
+{% block tbody %}
+
+{% for order_line in order_lines %}
+<tr>
+    <td data-field="state" data-checkbox="true"></td>
+    <td class="text-center">{{ order_line.id }}</td>
+    <td class="text-center">{{ order_line.amount }}</td>
+    <td class="text-center">{{ order_line.price }}</td>
+    <td class="text-center">
+        <div style="display:flex; align-items:center; justify-content: space-around;">
+            <a href="{{ path('order_line_show', {'id': order_line.id}) }}" class="btn btn-primary"><i class="fa fa-search-plus"></i></a>
+            <a href="{{ path('order_line_edit', {'id': order_line.id}) }}" class="btn btn-success"><i class="fas fa-edit"></i></a>
+            {{ include('order_line/_delete_form.html.twig') }}
+        </div>
+    </td>
+</tr>
+{% else %}
+<tr>
+    <td colspan="4">no records found</td>
+</tr>
+{% endfor %}
+
+{% endblock %}

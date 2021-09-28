@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet"  href={{ asset('assets/home/css/home.css') }} >
+{% endblock %}
+
+{% block body %}
+<h1 class="text-center title">Our products</h1>
+<div class="container">
+{% for product in products %}
+<div class="product">
+<div class='product-item'>
+    <span class='product-item-price'>{{ product.price }}$</span>
+    <div class="zoom-in">
+        <div class="text-hover">
+            <div class="text-center"> {{ product.name }} </div>
+        </div>
+        <img class='product-item-cover' src="{{ asset('/uploadsImages/'~ product.photo) }}" alt="{{ product.name }}" />
+    </div>
+</div>
+<div class="description">
+    <h4>  {{ product.description }} </h4>
+    <hr>
+    <button class="btn btn-primary show-more prod{{product.id}}" onclick="showUsage({{product.id}})">Show details</button>
+    <a class="btn btn-success" href="{{ path('cart_add', {'id': product.id}) }}"><i class="fas fa-shopping-cart"></i> Add</a>
+    <div class="usage prodUsage{{product.id}}">
+        <div class="usage-header">
+            <span>Usage:</span>
+            <button class="close-usage{{product.id}}" onclick="removeUsage({{product.id}})"><i class="fas fa-chevron-up"></i></button>
+        </div>
+        <p>{{product.prodUsage}}</p>
+    </div>
+</div>
+</div>
+
+{% endfor %}
+</div>
+
+
+
+{% endblock %}

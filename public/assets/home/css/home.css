@@ -1,0 +1,135 @@
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    margin: 5rem auto;
+}
+
+.title{
+    margin: 5rem auto;
+    color: #e74c3c;
+}
+
+
+.product{
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 320px;
+    border-radius: 1rem;
+    margin-top: 2rem;
+}
+
+.product-item {
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	flex-direction: column;
+	text-transform: capitalize;
+	position: relative;
+    width: 300px;
+    height: 300px;
+    padding-top: 2rem;
+}
+
+.product-item-price {
+	position: absolute;
+	border-radius: 20px 20px 20px 0;
+	background-color: #f39c12;
+	color: white;
+	padding: 15px;
+	right: 0;
+	top: 0;
+	font-weight: 500;
+    z-index: 100;
+    margin-top: 2rem;
+}
+
+.product-item-cover {
+	height: 300px;
+	width: 300px;
+	object-fit: cover;
+    transform: scale(1);
+    transition: .3s ease-in-out;
+}
+
+.zoom-in{
+    overflow: hidden;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+
+.zoom-in:hover .product-item-cover{
+    transform: scale(1.1);
+}
+
+.text-hover{
+    width: 100%;
+    height: 89%;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.301);
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    font-family: "Avro";
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+}
+
+.description{
+    width: 300px;
+    text-align: center;
+}
+
+.description h4{
+    color: black;
+}
+
+.usage{
+    display: none;
+    color:black;
+    text-align: justify;
+}
+
+.usage.active{
+    display: block;
+}
+
+.usage-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1rem;
+}
+
+.usage span{
+    font-weight: bold;
+    color: #10ac84;
+}
+
+.usage button{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background: rgb(88, 83, 83);
+    color: white;
+    cursor: pointer;
+}
+
+.usage p{
+    width: 300px;
+    height: auto;
+    padding: 0 1rem;
+}
+
+.description .btn{
+    margin-bottom: 2rem;
+}

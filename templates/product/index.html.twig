@@ -1,0 +1,46 @@
+{% extends 'table.html.twig' %}
+
+{% block title %}Products list{% endblock %}
+
+{% block path_new %}href="{{ path('product_new') }}"{% endblock %}
+
+{% block thead %}
+    <th class="text-center" data-field="state" data-checkbox="true"></th>
+    <th class="text-center" data-field="id" data-sortable="true">Id</th>
+    <th class="text-center" data-field="photo" data-sortable="true">Image</th>
+    <th class="text-center" data-field="name" data-sortable="true">Name</th>
+    <th class="text-center" data-field="category" data-sortable="true">Category</th>
+    <th class="text-center" data-field="description" data-sortable="true">Description</th>
+    <th class="text-center" data-field="price" data-sortable="true">Price</th>
+    <th class="text-center" data-field="action" data-sortable="true">actions</th>
+{% endblock %}
+
+{% block tbody %}
+
+{% for product in products %}
+<tr>
+    <td data-field="state" data-checkbox="true"></td>
+    <td class="text-center">{{ product.id }}</td>
+    <td class="text-center"><img src="{{ asset('/uploadsImages/'~ product.photo) }}" alt="" /></td>
+    <td class="text-center">{{ product.name }}</td>
+    <td class="text-center">{{ product.Category }}</td>
+    <td class="text-center">{{ product.description }}</td>
+    <td class="text-center">{{ product.price }}$</td>
+    <td class="text-center">
+        <div style="display:flex; align-items:center; justify-content: space-around;">
+            <a href="{{ path('product_show', {'id': product.id}) }}" class="btn btn-primary"><i class="fa fa-search-plus"></i></a>
+            <a href="{{ path('product_edit', {'id': product.id}) }}" class="btn btn-success"><i class="fas fa-edit"></i></a>
+            {{ include('product/_delete_form.html.twig') }}
+        </div>
+    </td>
+</tr>
+{% else %}
+<tr>
+    <td colspan="5">no records found</td>
+</tr>
+{% endfor %}
+
+{% endblock %}
+
+
+

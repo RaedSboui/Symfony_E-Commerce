@@ -1,0 +1,28 @@
+{% block stylesheet %}
+<link rel="stylesheet"  href={{ asset('assets/form/form.css') }} >
+{% endblock %}
+
+{{ form_start(form) }}
+
+    {{ form_row(form.name, {'attr': {'class' : 'form-control', 'placeholder': 'Product name'}}) }}
+
+    {{ form_row(form.category, {'attr': {'class' : 'form-control', 'placeholder': 'Category of product'}}) }}
+
+    {{ form_row(form.description, {'attr': {'class' : 'form-control', 'placeholder': 'Product description'}}) }}
+
+    {{ form_row(form.prodUsage, {'label': 'Product usage', 'attr': {'class' : 'form-control', 'placeholder': 'Product usage...'}}) }}
+
+    {{ form_row(form.price, {'attr': {'class' : 'form-control', 'placeholder': 'Product price'}}) }}
+
+    {{ form_row(form.photo, {'attr': {'class' : 'form-control'}}) }}
+<table>
+    <tr>
+    <td><a href="{{ path('product_index') }}" type="button" class="btn btn-primary" style="margin-right: 1rem;">
+            <i class="fas fa-arrow-left"></i> Back
+        </a>
+    </td>
+        <td><button class="btn btn-success">{{ button_label|default('Save') }}</button></td>
+    </tr>
+</table>
+{{ form_end(form) }}
+

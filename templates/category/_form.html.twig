@@ -1,0 +1,22 @@
+{% block stylesheet %}
+<link rel="stylesheet"  href={{ asset('assets/form/form.css') }} >
+{% endblock %}
+
+{{ form_start(form) }}
+
+    {{ form_row(form.name, {'attr': {'class' : 'form-control', 'placeholder': 'Category Name'}}) }}
+
+    <table>
+        <tr>
+            <td>
+                <a href="{{ path('category_index') }}" type="button" class="btn btn-primary" style="margin-right: 1rem;">
+                    <i class="fas fa-arrow-left"></i> Back
+                </a>
+            </td>
+            <td>
+                <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+            </td>
+        </tr>
+    </table>
+
+{{ form_end(form) }}

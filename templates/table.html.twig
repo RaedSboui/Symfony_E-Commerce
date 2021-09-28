@@ -1,0 +1,107 @@
+{% extends 'base.html.twig' %}
+
+
+{% block stylesheets %}
+    <link rel="stylesheet" href={{ asset('assets/data_table/css/bootstrap-table.min.css') }}>
+    <style>
+        img{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .fixed-table-toolbar{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .search .form-control{
+            width: 300px;
+            margin-left: 30px;
+            color: #130f40;
+            border: 2px #ffeaa7;
+            background-color: #ffeaa7;
+        }
+
+        .search .form-control:focus{
+            box-shadow: 0 0 12px #719ece;
+        }
+
+        @media(max-width: 730px){
+            .fixed-table-toolbar{
+                justify-content: center;
+            }
+            .search .form-control{
+                margin-left: 0px;
+                width: auto;
+            }
+        }
+    </style>
+{% endblock %}
+{% block javascripts %}
+    <script src={{ asset('assets/data_table/js/tableExport.min.js') }}></script>
+    <script src={{ asset('assets/data_table/js/bootstrap-table-locale-all.min.js') }}></script>
+    <!-- ToolBar -->
+    <script src={{ asset('assets/data_table/js/jquery.min.js') }}></script>
+    <script src={{ asset('assets/data_table/js/popper.min.js') }}></script>
+    <script src={{ asset('assets/theme/js/bootstrap.min.js') }}></script>
+    <script src={{ asset('assets/data_table/js/bootstrap-table.min.js') }}></script>
+    <!-- Export Plugins -->
+    <script src={{ asset('assets/data_table/js/bootstrap-table-export.min.js') }}></script>
+    <script src={{ asset('assets/data_table/js/tableExport.min.js') }}></script>
+       <!-- Page Jump To -->
+    <script src={{ asset('assets/data_table/js/bootstrap-table-page-jump-to.min.js') }}></script>
+       <!-- PDF -->
+    <script src={{ asset('assets/data_table/js/jsPDF/jspdf.min.js') }}></script>
+    <script src={{ asset('assets/data_table/js/jspdf.plugin.autotable.js') }}></script>
+
+        <!-- Copy -->
+    <script src={{ asset('assets/data_table/js/bootstrap-table-copy-rows.min.js') }}></script>
+{% endblock %}
+
+
+{% block body %}
+<div style="margin-top:5rem;">
+   <h2 class="text-center"> {% block title %}{% endblock %} </h1>
+   <div class="d-flex justify-content-end" style="margin: 1rem;">
+        <a {% block path_new %}{% endblock %} type="button" class="btn btn-warning">
+            <i class="fa fa-plus-circle" aria-hidden="true"></i>
+        </a>
+    </div>
+
+    <table  id="table"
+    class="table table-bordered table-striped"
+    data-toggle="table"
+    data-height="600"
+    data-pagination="true"
+    data-search="true"
+    data-search-align="right"
+    data-show-refresh="true"
+    data-show-fullscreen="true"
+    data-show-toggle="true"
+    data-show-columns="true"
+    data-show-export="true"
+    data-export-types= "['pdf','excel' ,'doc', 'txt', 'xlsx', 'json', 'xml', 'csv', 'sql', 'print']"
+    data-show-pagination-switch="true"
+    data-show-jump-to="true"
+    data-click-to-select="true"
+    data-show-copy-rows="true"
+    data-minimum-count-columns="2"
+    data-page-list="[5, 10, 50, 100, all]"
+    data-response-handler="responseHandler"
+    data-print-as-filtered-and-sorted-on-ui="true"
+    data-id-field="id">
+
+        <thead>
+            <tr>
+                {% block thead %}{% endblock %}
+            </tr>
+        </thead>
+
+        <tbody>
+            {% block tbody %}{% endblock %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

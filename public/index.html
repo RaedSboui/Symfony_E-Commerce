@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product list{% endblock %}
+
+{% block stylesheets %}
+        <link href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css" rel="stylesheet">
+
+    <style>
+      img{
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+      }
+    </style>
+{% endblock %}
+{% block javascripts %}
+    <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table-locale-all.min.js"></script>
+    <!-- Export Plugins -->
+    <script src="https://unpkg.com/bootstrap-table@1.18.3/dist/extensions/export/bootstrap-table-export.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin@1.10.21/tableExport.min.js"></script>
+       <!-- PDF -->
+    <script src="https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin@1.10.21/libs/jsPDF/jspdf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin@1.10.21/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
+        <!-- Print -->
+    <script src="https://unpkg.com/bootstrap-table@1.18.3/dist/extensions/print/bootstrap-table-print.js"></script>
+        <!-- Copy -->
+    <script src="https://unpkg.com/bootstrap-table@1.18.3/dist/extensions/copy-rows/bootstrap-table-copy-rows.min.js"></script>
+{% endblock %}
+
+
+{% block body %}
+    <table  id="table"
+            class="table table-bordered table-striped"
+            data-toggle="table"
+            data-height="460" 
+            data-pagination="true"
+            data-search="true"
+            data-show-refresh="true"
+            data-show-fullscreen="true"
+            data-show-columns="true"
+            data-show-print="true"
+            data-show-footer="true"
+            data-show-export="true"
+            data-export-types= "['pdf','excel' ,'doc', 'txt', 'xlsx', 'json', 'xml', 'csv', 'sql']"
+            data-show-pagination-switch="true"
+            data-print-as-filtered-and-sorted-on-ui="true"
+            data-click-to-select="true"
+            data-show-copy-rows="true"
+            data-minimum-count-columns="2"
+            data-id-field="id"
+            data-page-list="[10, 25, 50, 100, all]"
+            data-side-pagination="server"
+            data-response-handler="responseHandler"
+            
+            data-toolbar-align="right">
+        <thead>
+            <tr>
+                <th data-field="state" data-checkbox="true"></th>
+                <th data-field="id" data-sortable="true">Id</th>
+                <th data-field="photo" data-sortable="true">Image</th>
+                <th data-field="name" data-sortable="true">Name</th>
+                <th data-field="category" data-sortable="true">Category</th>
+                <th data-field="description" data-sortable="true">Description</th>
+                <th data-field="price" data-sortable="true">Price</th>
+                <th data-field="action" data-sortable="true">actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td data-field="state" data-checkbox="true"></td>
+                <td>{{ product.id }}</td>
+                <td><img src="{{ asset('/uploadsImages/'~ product.photo) }}" alt="" /></td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.Category }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.price }}</td>
+                <td>
+                    <a href="{{ path('product_show', {'id': product.id}) }}">show</a>
+                    <a href="{{ path('product_edit', {'id': product.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th data-checkbox="true" data-sortable="true"></th>
+                <th data-field="id" data-sortable="true">Id</th>
+                <th data-field="photo" data-sortable="true">Image</th>
+                <th  data-field="name" data-sortable="true">Name</th>
+                <th data-field="category" data-sortable="true">Category</th>
+                <th data-field="description" data-sortable="true">Description</th>
+                <th data-field="price" data-sortable="true">Price</th>
+                <th data-field="action" data-sortable="true">actions</th>
+            </tr>
+        </tfoot>
+    </table>
+<script>
+  $(function() {
+    $('#table').bootstrapTable()
+  })
+</script>
+{% endblock %}
+

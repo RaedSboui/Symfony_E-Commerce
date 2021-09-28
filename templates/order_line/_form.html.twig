@@ -1,0 +1,28 @@
+{% block stylesheet %}
+<link rel="stylesheet"  href={{ asset('assets/form/form.css') }} >
+{% endblock %}
+
+{{ form_start(form) }}
+
+{{ form_row(form.amount, {'attr': {'class' : 'form-control', 'placeholder': 'Amount'}}) }}
+
+{{ form_row(form.price, {'attr': {'class' : 'form-control', 'placeholder': 'Product price'}}) }}
+
+{{ form_row(form.product, {'attr': {'class' : 'form-control'}}) }}
+
+{{ form_row(form.order, {'attr': {'class' : 'form-control'}}) }}
+
+<table>
+    <tr>
+        <td>
+            <a href="{{ path('order_line_index') }}" type="button" class="btn btn-primary" style="margin-right: 1rem;">
+                <i class="fas fa-arrow-left"></i> Back
+            </a>
+        </td>
+        <td>
+            <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+        </td>
+    </tr>
+</table>
+
+{{ form_end(form) }}

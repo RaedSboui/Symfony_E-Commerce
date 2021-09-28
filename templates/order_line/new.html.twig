@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2 class="text-center" style="margin-top: 5rem;">Create new OrderLine</h2>
+
+    {{ include('order_line/_form.html.twig') }}
+
+    <table class="table" style="margin-top: 5rem;">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Amount</th>
+                <th>Price</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for order_line in order_lines %}
+            <tr>
+                <td>{{ order_line.id }}</td>
+                <td>{{ order_line.amount }}</td>
+                <td>{{ order_line.price }}</td>
+                <td>
+                    <a href="{{ path('order_line_show', {'id': order_line.id}) }}">show</a>
+                    <a href="{{ path('order_line_edit', {'id': order_line.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

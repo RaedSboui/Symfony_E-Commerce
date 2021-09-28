@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <h2>Edit Order <span style="color:#e74c3c;">N° {{order.id}}</span></h2>
+
+    {{ include('order/_form.html.twig', {'button_label': 'Update'}) }}
+
+{% endblock %}

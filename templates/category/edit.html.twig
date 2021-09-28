@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2 class="text-center">Edit Category <span style="color:#e74c3c;"> {{category.name}} </span></h2>
+
+    {{ include('category/_form.html.twig', {'button_label': 'Update'}) }}
+
+{% endblock %}
